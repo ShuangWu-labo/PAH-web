@@ -194,7 +194,8 @@ with tabs[0]:
                 Xval_std.columns = Xtrain.columns
                 ED = np.sqrt(np.sum(np.square(centroid_train.iloc[0, :] - Xval_std.iloc[0, :])))
                 mol1 = Chem.MolFromSmiles(smiles_val)
-                img = Draw.MolToImage(mol1, size=(360, 204))
+                # img = Draw.MolToImage(mol1, size=(360, 204))
+                img = Draw.MolDrawing(mol1, size=(360, 204))
                 img.save('aa.png')
                 fp1 = AllChem.GetMorganFingerprintAsBitVect(mol1, 2, nBits=1024)
                 Tanimoto = DataStructs.BulkTanimotoSimilarity(fp1, fps_all[:634])
@@ -256,7 +257,8 @@ with tabs[0]:
                 pLD50 = library['pLD50'][index]
                 LD50 = library['LD50'][index]
                 mol = Chem.MolFromSmiles(smiles_val)
-                img = Draw.MolToImage(mol, size=(360, 204))
+                # img = Draw.MolToImage(mol, size=(360, 204))
+                img = Draw.MolDrawing(mol, size=(360, 204))
                 img.save('aa.png')
                 RfD = round(LD50) / 30000
                 if LD50 <= 50:
